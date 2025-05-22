@@ -17,10 +17,6 @@
         {
             question: "Was brauche ich?",
             answer: "Bequeme Kleidung, Neugier und Lust auf Abenteuer – das reicht!"
-        },
-        {
-            question: "TEST?",
-            answer: "dszudzufdsdffst!"
         }
     ];
 
