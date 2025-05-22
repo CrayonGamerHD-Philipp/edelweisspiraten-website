@@ -21,7 +21,8 @@ export default {
 		adapter: adapter_static({
 			pages: 'build',
 			assets: 'build',
-			fallback: null
+			fallback: null,
+			entries: ['/', '/meute', '/sippe', '/faq', '/kontakt']
 		}),
 		paths: {
 			base: '',
