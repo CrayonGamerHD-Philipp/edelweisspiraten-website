@@ -12,8 +12,6 @@
             <div class="hidden md:flex gap-6 items-center">
                 <a href="/meute" class="nav-link">Meute</a>
                 <a href="/sippe" class="nav-link">Sippe</a>
-                <a href="/faq" class="nav-link">FAQ</a>
-                <a href="/kontakt" class="nav-link">Kontakt</a>
             </div>
 
             <!-- Mobile Toggle Button -->
@@ -33,8 +31,6 @@
         <div class="md:hidden px-4 pb-4 bg-white border-t border-gray-200 space-y-2">
             <a href="/meute" class="mobile-link">Meute</a>
             <a href="/sippe" class="mobile-link">Sippe</a>
-            <a href="/faq" class="mobile-link">FAQ</a>
-            <a href="/kontakt" class="mobile-link">Kontakt</a>
         </div>
     {/if}
 
