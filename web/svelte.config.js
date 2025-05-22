@@ -21,10 +21,11 @@ export default {
 		adapter: adapter({
 			pages: 'build',
 			assets: 'build',
-			fallback: 'index.html'
+			fallback: null,
+			precompress: false
 		}),
 		paths: {
-			base: '', // leer bei eigener Domain
+			base: process.env.NODE_ENV === 'production' ? '/edelweisspiraten-website' : ''
 		}
 	}
 };
