@@ -6,7 +6,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->
-            <a href="/" class="text-xl font-extrabold text-blue-600">Edelweipiraten</a>
+            <a href="/" class="text-xl font-extrabold text-indigo-900">Edelweißpiraten</a>
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex gap-6 items-center">
