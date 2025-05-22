@@ -1,3 +1,8 @@
+<svelte:head>
+    <title>Stamm Edelweißpiraten – Impressum</title>
+</svelte:head>
+
+
 <section class="max-w-5xl mx-auto py-12 px-6">
     <h2>Impressum</h2>
     <h2 id="m46">Diensteanbieter</h2>
