@@ -1,0 +1,23 @@
+{
+  "name": "website-edelweisspiraten",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+
+    "preview": "svelte-kit preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@sveltejs/kit": "^2.21.1",
+    "svelte": "^5.32.1"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
