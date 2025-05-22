@@ -1,11 +1,15 @@
 <script>
     import '../app.css';
     import Navbar from '$lib/components/Navbar.svelte';
+    import Footer from '$lib/components/Footer.svelte';
 
-    function toggleDark() {
-        document.documentElement.classList.toggle('dark');
-    }
 </script>
 
-<Navbar {toggleDark} />
-<slot />
+<div class="min-h-screen flex flex-col">
+    <Navbar />
+    <main class="flex-grow">
+        <slot />
+    </main>
+    <Footer />
+</div>
+
