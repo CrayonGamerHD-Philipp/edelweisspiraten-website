@@ -6,7 +6,7 @@
     let faqs = [
         {
             question: "Wie alt muss ich sein?",
-            answer: "Für die Meute: 6–10 Jahre. Für die Sippe: ab 10 Jahren.",
+            answer: "Für die Meute: 7–10 Jahre. Für die Sippe: ab 11 Jahren.",
         },
         {
             question: "Was kostet es?",
@@ -14,7 +14,7 @@
         },
         {
             question: "Kann ich mir das mal Anschauen?",
-            answer: "Klar komm einfach vorbei! Montags ab 12 Jahren Freitags von 7-11 Jahren (Ab dem 15.08.2025)"
+            answer: "Klar komm einfach vorbei! Montags ab 11 Jahren Freitags von 7-10 Jahren (Ab dem 15.08.2025)"
         },
         {
             question: "Was brauche ich?",
@@ -45,7 +45,7 @@
     <h2 class="text-3xl font-bold text-gray-800 mb-6">Unsere Gruppen</h2>
     <!-- Meute -->
     <div class="bg-white border border-gray-300 p-8 w-full">
-        <h2 class="text-2xl font-bold text-blue-700">Meute (6–10 Jahre)</h2>
+        <h2 class="text-2xl font-bold text-blue-700">Meute (7–10 Jahre)</h2>
         <p class="text-gray-700 mt-2">Spielen, Basteln und kleine Abenteuer in der Gruppe erleben.</p>
         <p class="text-sm text-gray-500 mt-4">Freitags · 16:30 Uhr - 18 Uhr · Auferstehungsgemeinde Bremen Hastedt</p>
         <a href="/meute" class="inline-block mt-4 px-4 py-2 bg-blue-100 text-blue-700 font-medium border border-blue-300 hover:bg-blue-200 transition rounded">
@@ -59,7 +59,7 @@
 
     <!-- Sippe -->
     <div class="bg-white border border-gray-300 p-8 w-full">
-        <h2 class="text-2xl font-bold text-green-700">Sippe (ab 10 Jahren)</h2>
+        <h2 class="text-2xl font-bold text-green-700">Sippe (ab 11 Jahren)</h2>
         <p class="text-gray-700 mt-2">Zeltlager, Fahrten und echte Gemeinschaft mit Gleichaltrigen.</p>
         <p class="text-sm text-gray-500 mt-4">Montags · 16:30 Uhr - 18 Uhr · Auferstehungsgemeinde Bremen Hastedt</p>
         <a href="/sippe" class="inline-block mt-4 px-4 py-2 bg-green-100 text-green-700 font-medium border border-green-300 hover:bg-green-200 transition rounded">
