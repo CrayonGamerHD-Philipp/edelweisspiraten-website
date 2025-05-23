@@ -15,7 +15,7 @@
         <p class="text-gray-700 mt-2">Gruppenleiter</p>
         <p class="text-sm text-gray-500">Melina und Sebastian</p>
         <p class="text-gray-700 mt-2">Urzeit</p>
-        <p class="text-sm text-gray-500">Freitags 16:30 Uhr - 18:00 Uhr</p>
+        <p class="text-sm text-gray-500">Montags 16:30 Uhr - 18:00 Uhr</p>
         <p class="text-gray-700 mt-2">Ort</p>
         <p class="text-sm text-gray-500">Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
         <p class="text-gray-700 mt-2">Alter</p>
