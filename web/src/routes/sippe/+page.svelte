@@ -1,5 +1,6 @@
 <svelte:head>
     <title>Stamm Edelweißpiraten – Sippe</title>
+    <meta name="description" content="Die Sippe der Edelweißpiraten – Pfadfindergruppe für Jugendliche ab 11 Jahren. Lagerfeuer, Fahrten und echte Gemeinschaft in Bremen-Hastedt." />
 </svelte:head>
 
 <script>

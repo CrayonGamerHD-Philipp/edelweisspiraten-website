@@ -1,5 +1,6 @@
 <svelte:head>
     <title>Stamm Edelweißpiraten – Impressum</title>
+    <meta name="description" content="Impressum des Stamms Edelweißpiraten – Rechtliche Informationen und Kontaktdaten gemäß §5 TMG für unsere Pfadfinder-Website." />
 </svelte:head>
 
 
