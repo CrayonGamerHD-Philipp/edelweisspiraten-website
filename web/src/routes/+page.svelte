@@ -3,6 +3,9 @@
 </svelte:head>
 
 <script>
+
+    import Map from '$lib/components/Map.svelte';
+
     let faqs = [
         {
             question: "Wie alt muss ich sein?",
@@ -102,6 +105,11 @@
                 {/if}
             </div>
         {/each}
+    </div>
+
+    <div class="mt-10">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Hier findest du uns</h2>
+        <Map/>
     </div>
 </section>
 

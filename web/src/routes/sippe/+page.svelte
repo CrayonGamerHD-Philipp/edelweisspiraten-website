@@ -3,6 +3,7 @@
 </svelte:head>
 
 <script>
+    import Map from '$lib/components/Map.svelte';
     import termine from '$lib/data/sippe-termine.json';
 
     function formatDate(dateStr) {
@@ -17,9 +18,9 @@
 </script>
 
 <section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
-    <div class="bg-white border border-gray-300 p-8 w-full mb-20">
-        <h2 class="text-2xl font-bold text-green-700">Sippe</h2>
-        <p class="text-gray-700 mt-2">Gruppenname</p>
+    <h2 class="text-2xl font-bold text-green-700">Sippe</h2>
+    <div class="bg-white border border-gray-300 p-8 w-full">
+        <p class="text-gray-700">Gruppenname</p>
         <p class="text-sm text-gray-500">Die Goldenen Löwenzähne</p>
         <p class="text-gray-700 mt-2">Gruppenleiter</p>
         <p class="text-sm text-gray-500">Melina und Sebastian</p>
@@ -31,13 +32,11 @@
         <p class="text-sm text-gray-500">11 - 14 Jahre</p>
     </div>
 
-    <div class="bg-white border border-gray-300 p-8 w-full mb-20">
-        <h2 class="text-2xl mb-2 font-bold text-green-700">Das sind wir</h2>
-        <p>....</p>
-    </div>
+    <h2 class="text-2xl mb-2 font-bold text-green-700">Das sind wir</h2>
+    <p>....</p>
 
+    <h2 class="text-2xl mb-2 font-bold text-green-700">Termine</h2>
     <div class="bg-white border border-gray-300 p-8 w-full">
-        <h2 class="text-2xl mb-2 font-bold text-green-700">Termine</h2>
         <div class="space-y-4">
             {#each termine as termin}
                 <div class="border p-4 rounded shadow hover:shadow-md transition border-green-700">
@@ -54,4 +53,7 @@
             {/each}
         </div>
     </div>
+
+    <h2 class="text-2xl mb-2 font-bold text-green-700">Treffpunkt</h2>
+    <Map/>
 </section>
