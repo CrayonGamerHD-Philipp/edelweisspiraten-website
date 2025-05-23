@@ -48,10 +48,10 @@
     <h2 class="text-3xl font-bold text-gray-800 mb-6">Unsere Gruppen</h2>
     <!-- Meute -->
     <div class="bg-white border border-gray-300 p-8 w-full">
-        <h2 class="text-2xl font-bold text-blue-700">Meute (7–10 Jahre)</h2>
+        <h2 class="text-2xl font-bold text-green-700">Meute (7–10 Jahre)</h2>
         <p class="text-gray-700 mt-2">Spielen, Basteln und kleine Abenteuer in der Gruppe erleben.</p>
         <p class="text-sm text-gray-500 mt-4">Freitags · 16:30 Uhr - 18 Uhr · Auferstehungsgemeinde Bremen Hastedt</p>
-        <a href="/meute" class="inline-block mt-4 px-4 py-2 bg-blue-100 text-blue-700 font-medium border border-blue-300 hover:bg-blue-200 transition rounded">
+        <a href="/meute" class="inline-block mt-4 px-4 py-2 bg-green-100 text-green-700 font-medium border border-green-300 hover:bg-green-200 transition rounded">
             Mehr zur Meute →
         </a>
         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-900 p-4 max-w-5xl mx-auto mt-8">
@@ -62,10 +62,10 @@
 
     <!-- Sippe -->
     <div class="bg-white border border-gray-300 p-8 w-full">
-        <h2 class="text-2xl font-bold text-green-700">Sippe (ab 11 Jahren)</h2>
+        <h2 class="text-2xl font-bold text-blue-700">Sippe (11-14 Jahre)</h2>
         <p class="text-gray-700 mt-2">Zeltlager, Fahrten und echte Gemeinschaft mit Gleichaltrigen.</p>
         <p class="text-sm text-gray-500 mt-4">Montags · 16:30 Uhr - 18 Uhr · Auferstehungsgemeinde Bremen Hastedt</p>
-        <a href="/sippe" class="inline-block mt-4 px-4 py-2 bg-green-100 text-green-700 font-medium border border-green-300 hover:bg-green-200 transition rounded">
+        <a href="/sippe" class="inline-block mt-4 px-4 py-2 bg-blue-100 text-blue-700 font-medium border border-blue-300 hover:bg-blue-200 transition rounded">
             Mehr zur Sippen →
         </a>
     </div>
