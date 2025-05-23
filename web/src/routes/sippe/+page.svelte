@@ -23,7 +23,11 @@
     </div>
 
     <h2 class="text-2xl mb-2 font-bold text-green-700">Das sind wir</h2>
-    <p>....</p>
+    <p class="text-gray-700 leading-relaxed text-justify">
+        Wir sind die <span class="font-semibold">Sippe der Edelweißpiraten</span> – eine Pfadfindergruppe für Jugendliche ab 11 Jahren.
+        In unseren wöchentlichen Gruppenstunden und auf Fahrten erleben wir echte Abenteuer, wachsen als Team zusammen und entdecken die Natur.
+        Ob Lagerfeuer, Zeltlager oder Geländespiel – bei uns ist immer etwas los!
+    </p>
 
     <h2 class="text-2xl mb-2 font-bold text-green-700">Treffpunkt</h2>
     <Map/>
