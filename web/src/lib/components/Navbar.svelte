@@ -12,6 +12,7 @@
             <div class="hidden md:flex gap-6 items-center">
                 <a href="/meute" class="nav-link">Meute</a>
                 <a href="/sippe" class="nav-link">Sippe</a>
+                <a href="/kontakt" class="nav-link">Kontakt</a>
             </div>
 
             <!-- Mobile Toggle Button -->
@@ -28,9 +29,16 @@
 
     <!-- Mobile Navigation -->
     {#if open}
-        <div class="md:hidden px-4 pb-4 bg-white border-t border-gray-200 space-y-2">
-            <a href="/meute" class="mobile-link">Meute</a>
-            <a href="/sippe" class="mobile-link">Sippe</a>
+        <div class="md:hidden px-4 pb-4 bg-white border-t border-gray-200 space-y-3">
+            <p class="text-sm text-gray-500 uppercase font-semibold tracking-wide mt-2">Gruppen</p>
+            <div class="flex flex-col space-y-2 ml-2">
+                <a href="/meute" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Meute</a>
+                <a href="/sippe" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Sippe</a>
+            </div>
+
+            <hr class="my-3 border-gray-300" />
+
+            <a href="/kontakt" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Kontakt</a>
         </div>
     {/if}
 
@@ -40,7 +48,7 @@
         }
 
         .mobile-link {
-            @apply block text-gray-700 hover:text-blue-600 font-medium;
+            @apply block text-gray-700 hover:text-blue-600 font-semibold transition;
         }
     </style>
 </nav>
