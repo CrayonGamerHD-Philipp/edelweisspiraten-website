@@ -1,14 +1,14 @@
 <script>
     import { onMount } from 'svelte';
-    import L from 'leaflet';
 
     let map;
-
     const lat = 53.064289;
     const lng = 8.868496;
     const zoom = 16;
 
-    onMount(() => {
+    onMount(async () => {
+        const L = await import('leaflet');
+
         map = L.map('map').setView([lat, lng], zoom);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -23,4 +23,5 @@
     });
 </script>
 
+<!-- Karte -->
 <div id="map" class="relative z-0 w-full h-[400px] rounded shadow"></div>
