@@ -50,7 +50,7 @@
     <div class="bg-white border border-gray-300 p-8 w-full">
         <h2 class="text-2xl font-bold text-green-700">Meute (7–10 Jahre)</h2>
         <p class="text-gray-700 mt-2">Spielen, Basteln und kleine Abenteuer in der Gruppe erleben.</p>
-        <p class="text-sm text-gray-500 mt-4">Freitags · 16:30 Uhr - 18 Uhr · Auferstehungsgemeinde Bremen Hastedt</p>
+        <p class="text-sm text-gray-500 mt-4">Freitags · 16:30 Uhr - 18 Uhr · Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
         <a href="/meute" class="inline-block mt-4 px-4 py-2 bg-green-100 text-green-700 font-medium border border-green-300 hover:bg-green-200 transition rounded">
             Mehr zur Meute →
         </a>
@@ -64,7 +64,7 @@
     <div class="bg-white border border-gray-300 p-8 w-full">
         <h2 class="text-2xl font-bold text-blue-700">Sippe (11-14 Jahre)</h2>
         <p class="text-gray-700 mt-2">Zeltlager, Fahrten und echte Gemeinschaft mit Gleichaltrigen.</p>
-        <p class="text-sm text-gray-500 mt-4">Montags · 16:30 Uhr - 18 Uhr · Auferstehungsgemeinde Bremen Hastedt</p>
+        <p class="text-sm text-gray-500 mt-4">Montags · 16:30 Uhr - 18 Uhr · Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
         <a href="/sippe" class="inline-block mt-4 px-4 py-2 bg-blue-100 text-blue-700 font-medium border border-blue-300 hover:bg-blue-200 transition rounded">
             Mehr zur Sippen →
         </a>

@@ -18,7 +18,7 @@
 
         L.marker([lat, lng])
             .addTo(map)
-            .bindPopup('Ev. Auferstehungsgemeinde Bremen Hastedt')
+            .bindPopup('Ev. Auferstehungsgemeinde Bremen-Hastedt')
             .openPopup();
     });
 </script>
