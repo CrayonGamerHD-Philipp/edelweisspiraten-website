@@ -1,18 +1,25 @@
+<svelte:head>
+    <title>Stamm Edelweißpiraten</title>
+    <meta name="description" content="Pfadfinder in Bremen-Hastedt – Abenteuer, Gemeinschaft & wöchentliche Gruppenstunden für Kinder und Jugendliche." />
+</svelte:head>
+
 <script>
+
+    import Map from '$lib/components/Map.svelte';
+    import StammHeader from '$lib/components/StammHeader.svelte';
+
     let faqs = [
         {
             question: "Wie alt muss ich sein?",
-            answer: "Für die Meute: 7–11 Jahre. Für die Sippe: ab 12 Jahren.",
-            open: false
+            answer: "Für die Meute: 7–10 Jahre. Für die Sippe: ab 11 Jahren.",
         },
         {
             question: "Was kostet es?",
             answer: "Der Jahresbeitrag beträgt aktuell 47€ – Schnuppern ist kostenlos.",
-            open: false
         },
         {
             question: "Kann ich mir das mal Anschauen?",
-            answer: "Klar komm einfach vorbei! Montags ab 12 Jahren Freitags von 7-11 Jahren (Ab dem 15.08.2025)"
+            answer: "Klar komm einfach vorbei! Montags ab 11 Jahren Freitags von 7-10 Jahren (Ab dem 15.08.2025)"
         },
         {
             question: "Was brauche ich?",
@@ -32,9 +39,7 @@
     <img src="/pfadfinder.jpg" alt="Stamm Edelweißpiraten"
          class="absolute w-full h-full object-cover brightness-75" />
     <div class="absolute inset-0 flex items-center justify-center">
-        <h1 class="text-white text-5xl md:text-6xl font-extrabold text-center">
-            Stamm Edelweißpiraten
-        </h1>
+        <StammHeader/>
     </div>
 </section>
 
@@ -43,10 +48,10 @@
     <h2 class="text-3xl font-bold text-gray-800 mb-6">Unsere Gruppen</h2>
     <!-- Meute -->
     <div class="bg-white border border-gray-300 p-8 w-full">
-        <h2 class="text-2xl font-bold text-blue-700">Meute (6–10 Jahre)</h2>
+        <h2 class="text-2xl font-bold text-green-700">Meute (7–10 Jahre)</h2>
         <p class="text-gray-700 mt-2">Spielen, Basteln und kleine Abenteuer in der Gruppe erleben.</p>
-        <p class="text-sm text-gray-500 mt-4">Freitags · 16:30 Uhr - 18 Uhr · Auferstehungsgemeinde Bremen Hastedt</p>
-        <a href="/meute" class="inline-block mt-4 px-4 py-2 bg-blue-100 text-blue-700 font-medium border border-blue-300 hover:bg-blue-200 transition rounded">
+        <p class="text-sm text-gray-500 mt-4">Freitags · 16:30 Uhr - 18 Uhr · Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
+        <a href="/meute" class="inline-block mt-4 px-4 py-2 bg-green-100 text-green-700 font-medium border border-green-300 hover:bg-green-200 transition rounded">
             Mehr zur Meute →
         </a>
         <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-900 p-4 max-w-5xl mx-auto mt-8">
@@ -57,11 +62,11 @@
 
     <!-- Sippe -->
     <div class="bg-white border border-gray-300 p-8 w-full">
-        <h2 class="text-2xl font-bold text-green-700">Sippe (ab 10 Jahren)</h2>
+        <h2 class="text-2xl font-bold text-blue-700">Sippe (11-14 Jahre)</h2>
         <p class="text-gray-700 mt-2">Zeltlager, Fahrten und echte Gemeinschaft mit Gleichaltrigen.</p>
-        <p class="text-sm text-gray-500 mt-4">Montags · 16:30 Uhr - 18 Uhr · Auferstehungsgemeinde Bremen Hastedt</p>
-        <a href="/sippe" class="inline-block mt-4 px-4 py-2 bg-green-100 text-green-700 font-medium border border-green-300 hover:bg-green-200 transition rounded">
-            Mehr zur Sippe Sippen →
+        <p class="text-sm text-gray-500 mt-4">Montags · 16:30 Uhr - 18 Uhr · Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
+        <a href="/sippe" class="inline-block mt-4 px-4 py-2 bg-blue-100 text-blue-700 font-medium border border-blue-300 hover:bg-blue-200 transition rounded">
+            Mehr zur Sippen →
         </a>
     </div>
 </section>
@@ -69,8 +74,24 @@
 <!-- Über uns -->
 <section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
     <h2 class="text-3xl font-bold text-gray-800 mb-6">Über Uns</h2>
-    <p>Comming soon</p>
+
+    <p class="text-justify">
+        Wir sind der <span class="font-bold">Stamm Edelweißpiraten</span> der Christlichen Pfadfinderschaft Deutschlands e.V. (CPD).
+        Unser Zuhause ist Bremen Hastedt, wo wir eng mit der Evangelischen Auferstehungsgemeinde zusammenarbeiten.
+        Als Teil der CPD bieten wir Kindern und Jugendlichen eine lebendige Gemeinschaft, in der Abenteuer, Freundschaft und
+        Verantwortung großgeschrieben werden.
+    </p>
+
+    <p class="text-justify">
+        Neben unseren wöchentlichen Gruppenstunden unternehmen wir regelmäßig spannende Fahrten und Aktionen. Ob im Wald,
+        am Lagerfeuer oder auf einem Zeltplatz – bei uns gibt es immer etwas zu erleben.
+    </p>
+
+    <p class="font-bold">
+        Jede und jeder ist willkommen – komm vorbei und mach mit!
+    </p>
 </section>
+
 
 <!-- FAQ -->
 <section class="max-w-5xl mx-auto px-6 py-12">
@@ -95,16 +116,10 @@
             </div>
         {/each}
     </div>
-</section>
 
-<!-- INSTAGRAM-KACHEL -->
-<section class="max-w-5xl mx-auto py-12 px-6">
-    <div class="bg-gradient-to-br from-pink-500 to-purple-600 text-white p-8 w-full shadow-md">
-        <h3 class="text-2xl font-bold mb-4">📸 Folge uns auf Instagram!</h3>
-        <p class="mb-6">Erlebe unsere Aktionen, Fahrten und Gruppenstunden mit – auch online.</p>
-        <a href="https://instagram.com/edelweisspiraten_cpd" target="_blank"
-           class="inline-block bg-white text-pink-600 font-bold px-6 py-2 rounded-full hover:bg-gray-100 transition">
-            @edelweisspiraten_cpd
-        </a>
+    <div class="mt-10">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Hier findest du uns</h2>
+        <Map/>
     </div>
 </section>
+
