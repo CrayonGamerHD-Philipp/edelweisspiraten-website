@@ -1,5 +1,5 @@
 <svelte:head>
-    <title>Stamm Edelweißpiraten – Startseite</title>
+    <title>Stamm Edelweißpiraten</title>
 </svelte:head>
 
 <script>
