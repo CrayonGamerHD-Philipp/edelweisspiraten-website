@@ -20,7 +20,8 @@
         <h2 class="text-2xl font-semibold text-gray-800">Unser Treffpunkt</h2>
         <p class="text-gray-600">
             Evangelische Auferstehungsgemeinde Bremen-Hastedt<br />
-            Bennigsenstraße 7<br />
+            Stamm Edelweißpiraten<br />
+            Drakenburger Str. 42<br />
             28207 Bremen
         </p>
         <div class="mt-4">
