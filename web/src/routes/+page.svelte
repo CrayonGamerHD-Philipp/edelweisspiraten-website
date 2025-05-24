@@ -36,7 +36,7 @@
 
 <!-- HERO -->
 <section class="relative h-[70vh] w-full overflow-hidden">
-    <img src="/pfadfinder.jpg" alt="Stamm Edelweißpiraten"
+    <img src="/pfadfinder.avif" alt="Stamm Edelweißpiraten"
          class="absolute w-full h-full object-cover brightness-75" />
     <div class="absolute inset-0 flex items-center justify-center">
         <StammHeader/>

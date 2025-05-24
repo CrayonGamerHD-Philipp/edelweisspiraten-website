@@ -15,7 +15,7 @@
 
     <!-- Logo -->
     <img
-            src="/logo.png"
+            src="/logo.avif"
             alt="Wappen Stamm Edelweißpiraten"
             class="w-24 md:w-36 h-auto shrink-0"
     />
