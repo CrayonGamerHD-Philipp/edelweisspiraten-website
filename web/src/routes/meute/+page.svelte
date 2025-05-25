@@ -5,6 +5,7 @@
 
 <script>
     import Map from '$lib/components/Map.svelte';
+    import EmailButtons from "$lib/components/EmailButtons.svelte";
 </script>
 
 <section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
@@ -44,4 +45,13 @@
 
     <h2 class="text-2xl mb-2 font-bold text-green-700">Treffpunkt</h2>
     <Map/>
+
+    <div class="space-y-6 mt-20">
+        <div class="border-l-4 border-green-400 bg-green-50 p-4">
+            <h3 class="text-xl font-bold text-green-700">Meute (7–10 Jahre)</h3>
+            <p class="text-gray-700 mt-1"><span class="font-bold">Ansprechpartner</span><br>Larissa und Fipsi (Philipp)</p>
+            <p class="text-gray-700 mt-1"><span class="font-bold">E-Mail</span><br>meute@edelweisspiraten-bremen.de</p>
+            <EmailButtons email="meute@edelweisspiraten-bremen.de" color="green" />
+        </div>
+    </div>
 </section>

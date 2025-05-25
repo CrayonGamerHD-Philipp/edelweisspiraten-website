@@ -5,6 +5,7 @@
 
 <script>
     import Map from '$lib/components/Map.svelte';
+    import EmailButtons from '$lib/components/EmailButtons.svelte';
 </script>
 
 <section class="max-w-5xl mx-auto px-6 py-12 space-y-10">
@@ -20,7 +21,8 @@
         <h2 class="text-2xl font-semibold text-gray-800">Unser Treffpunkt</h2>
         <p class="text-gray-600">
             Evangelische Auferstehungsgemeinde Bremen-Hastedt<br />
-            Bennigsenstraße 7<br />
+            Stamm Edelweißpiraten<br />
+            Drakenburger Str. 42<br />
             28207 Bremen
         </p>
         <div class="mt-4">
@@ -33,30 +35,27 @@
         <h2 class="text-2xl font-semibold text-gray-800">Ansprechpartner</h2>
 
         <!-- Meute -->
-        <div class="border-l-4 border-yellow-400 bg-yellow-50 p-4">
-            <h3 class="text-xl font-bold text-yellow-700">Meute (7–10 Jahre)</h3>
-            <p class="text-gray-700 mt-1">Larissa und Fipsi (Philipp)</p>
-            <a href="mailto:meute@edelweisspiraten-bremen.de" class="inline-block mt-2 px-4 py-2 bg-yellow-200 text-yellow-900 rounded hover:bg-yellow-300 transition">
-                ✉️ E-Mail an die Gruppenleitung der Meute
-            </a>
+        <div class="border-l-4 border-green-400 bg-green-50 p-4">
+            <h3 class="text-xl font-bold text-green-700">Meute (7–10 Jahre)</h3>
+            <p class="text-gray-700 mt-1"><span class="font-bold">Ansprechpartner</span><br>Larissa und Fipsi (Philipp)</p>
+            <p class="text-gray-700 mt-1"><span class="font-bold">E-Mail</span><br>meute@edelweisspiraten-bremen.de</p>
+            <EmailButtons email="meute@edelweisspiraten-bremen.de" color="green" />
         </div>
 
         <!-- Sippe -->
         <div class="border-l-4 border-blue-400 bg-blue-50 p-4">
             <h3 class="text-xl font-bold text-blue-700">Sippe (11–14 Jahre)</h3>
-            <p class="text-gray-700 mt-1">Melina und Sebastian</p>
-            <a href="mailto:sippe@edelweisspiraten-bremen.de" class="inline-block mt-2 px-4 py-2 bg-blue-200 text-blue-900 rounded hover:bg-blue-300 transition">
-                ✉️ E-Mail an die Gruppenleitung der Sippe
-            </a>
+            <p class="text-gray-700 mt-1"><span class="font-bold">Ansprechpartner</span><br>Melina und Sebastian</p>
+            <p class="text-gray-700 mt-1"><span class="font-bold">E-Mail</span><br>sippe@edelweisspiraten-bremen.de</p>
+            <EmailButtons email="sippe@edelweisspiraten-bremen.de" color="blue" />
         </div>
 
         <!-- Stammesführung -->
-        <div class="border-l-4 border-indigo-400 bg-indigo-50 p-4">
-            <h3 class="text-xl font-bold text-indigo-700">Stammesführung</h3>
-            <p class="text-gray-700 mt-1">Melina, Lina und Emma</p>
-            <a href="mailto:stafue@edelweisspiraten-bremen.de" class="inline-block mt-2 px-4 py-2 bg-indigo-200 text-indigo-900 rounded hover:bg-indigo-300 transition">
-                ✉️ E-Mail an die Stammesführung
-            </a>
+        <div class="border-l-4 border-red-400 bg-red-50 p-4">
+            <h3 class="text-xl font-bold text-red-700">Stammesführung</h3>
+            <p class="text-gray-700 mt-1"><span class="font-bold">Ansprechpartner</span><br>Melina, Emma und Lina</p>
+            <p class="text-gray-700 mt-1"><span class="font-bold">E-Mail</span><br>stafues@edelweisspiraten-bremen.de</p>
+            <EmailButtons email="stafues@edelweisspiraten-bremen.de" color="red" />
         </div>
     </div>
 
