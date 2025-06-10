@@ -11,7 +11,7 @@
             <!-- Desktop Navigation -->
             <div class="hidden md:flex gap-6 items-center">
                 <a href="/meute" class="nav-link">Meute</a>
-                <a href="/sippe" class="nav-link">Sippe</a>
+                <a href="/sippe/die-goldenen-loewenzaehne" class="nav-link">Sippe</a>
                 <a href="/termine" class="nav-link">Termine</a>
                 <a href="/kontakt" class="nav-link">Kontakt</a>
                 <a href="/download" class="nav-link">Download</a>
@@ -35,7 +35,7 @@
             <p class="text-sm text-gray-500 uppercase font-semibold tracking-wide mt-2">Gruppen</p>
             <div class="flex flex-col space-y-2 ml-2">
                 <a href="/meute" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Meute</a>
-                <a href="/sippe" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Sippe</a>
+                <a href="/sippe/die-goldenen-loewenzaehne" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Sippe</a>
             </div>
 
             <hr class="my-3 border-gray-300" />
