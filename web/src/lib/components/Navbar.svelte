@@ -12,7 +12,9 @@
             <div class="hidden md:flex gap-6 items-center">
                 <a href="/meute" class="nav-link">Meute</a>
                 <a href="/sippe" class="nav-link">Sippe</a>
+                <a href="/termine" class="nav-link">Termine</a>
                 <a href="/kontakt" class="nav-link">Kontakt</a>
+                <a href="/download" class="nav-link">Download</a>
             </div>
 
             <!-- Mobile Toggle Button -->
@@ -38,7 +40,15 @@
 
             <hr class="my-3 border-gray-300" />
 
+            <a href="/termine" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Termine</a>
+
+            <hr class="my-3 border-gray-300" />
+
             <a href="/kontakt" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Kontakt</a>
+
+            <hr class="my-3 border-gray-300" />
+
+            <a href="/download" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Download</a>
         </div>
     {/if}
 

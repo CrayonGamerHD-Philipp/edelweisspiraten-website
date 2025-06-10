@@ -6,7 +6,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
-
     "preview": "svelte-kit preview"
   },
   "keywords": [],
@@ -15,6 +14,7 @@
   "description": "",
   "dependencies": {
     "@sveltejs/kit": "^2.21.1",
+    "pocketbase": "^0.26.0",
     "svelte": "^5.32.1"
   },
   "devDependencies": {

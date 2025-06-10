@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  pocketbase:
+    image: ghcr.io/pocketbase/pocketbase:latest
+    container_name: pocketbase
+    restart: unless-stopped
+    ports:
+      - "8090:8090"  # Port für Admin UI und API
+    volumes:
+      - ./pb_data:/pb_data  # persistente Daten
+      - ./pb_migrations:/pb_migrations  # falls du Migrations nutzen willst
+    command: ["serve", "--dir", "/pb_data", "--migrationsDir", "/pb_migrations"]
