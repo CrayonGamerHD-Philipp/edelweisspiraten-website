@@ -3,7 +3,7 @@ name: Deploy to Server (SvelteKit)
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -20,7 +20,7 @@ jobs:
         run: |
           sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} <<EOF
             cd ${{ secrets.DEPLOY_PATH }}
-            git pull origin main || git clone https://github.com/YOURNAME/YOURREPO.git .
+            git pull origin master || git clone https://github.com/CrayonGamerHD-Philipp/edelweisspiraten-website.git .
             npm install
             npm run build
             pm2 restart sveltekit || pm2 start npm --name sveltekit -- start
