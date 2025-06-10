@@ -1,0 +1,28 @@
+name: Deploy to Server (SvelteKit)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      - name: Upload & Deploy
+        run: |
+          sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} <<EOF
+            cd ${{ secrets.DEPLOY_PATH }}
+            git pull origin main || git clone https://github.com/YOURNAME/YOURREPO.git .
+            npm install
+            npm run build
+            pm2 restart sveltekit || pm2 start npm --name sveltekit -- start
+            pm2 save
+          EOF
