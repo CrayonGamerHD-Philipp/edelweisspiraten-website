@@ -6,6 +6,7 @@
 <script>
     import Map from '$lib/components/Map.svelte';
     import EmailButtons from "$lib/components/EmailButtons.svelte";
+    import AppointmentPreview from "$lib/components/AppointmentPreview.svelte";
 </script>
 
 <section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
@@ -41,4 +42,6 @@
             <EmailButtons email="sippe@edelweisspiraten-bremen.de" color="blue" />
         </div>
     </div>
+
+    <AppointmentPreview gruppe="sippe"/>
 </section>
