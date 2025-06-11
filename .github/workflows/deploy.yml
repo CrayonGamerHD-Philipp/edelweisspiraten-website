@@ -1,4 +1,4 @@
-name: Deploy to Server (SvelteKit)
+name: Deploy to Server (SvelteKit - dynamic)
 
 on:
   push:
@@ -19,9 +19,13 @@ jobs:
       - name: Upload & Deploy
         run: |
           sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -tt -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} <<EOF
+            set -e
+
+            # Zielverzeichnis erstellen & betreten
             mkdir -p ${{ secrets.DEPLOY_PATH }}
             cd ${{ secrets.DEPLOY_PATH }}
 
+            # Repo klonen oder updaten
             if [ -d ".git" ]; then
               git pull origin master
             else
@@ -29,16 +33,14 @@ jobs:
               git clone https://github.com/CrayonGamerHD-Philipp/edelweisspiraten-website.git .
             fi
 
+            # In den Web-Ordner wechseln
             cd web
 
+            # Abhängigkeiten installieren & Build ausführen
             npm install
+            npm run build
 
-            if npm run build; then
-              pm2 restart sveltekit || pm2 start npm --name sveltekit -- start
-              pm2 save
-            else
-              echo "Build failed – skipping PM2 start"
-              exit 1
-            fi
+            # PM2-Prozess neu starten (falls vorhanden) oder neu starten
+            pm2 restart sveltekit || pm2 start npm --name sveltekit -- start
+            pm2 save
           EOF
-        
