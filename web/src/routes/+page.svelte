@@ -86,7 +86,7 @@
         <h2 class="text-2xl font-bold text-blue-700">Sippe (ab 15 Jahren)</h2>
         <p class="text-gray-700 mt-2">Zeltlager, Fahrten und echte Gemeinschaft mit Gleichaltrigen.</p>
         <p class="text-sm text-gray-500 mt-4">Freitgas · 18:00 Uhr - 19 Uhr / 19:30 Uhr · Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
-        <a href="/sippe/funckel-fuechse" class="inline-block mt-4 px-4 py-2 bg-blue-100 text-blue-700 font-medium border border-blue-300 hover:bg-blue-200 transition rounded">
+        <a href="/sippe/funkelfuechse" class="inline-block mt-4 px-4 py-2 bg-blue-100 text-blue-700 font-medium border border-blue-300 hover:bg-blue-200 transition rounded">
             Mehr zur Sippen →
         </a>
     </div>

@@ -13,7 +13,7 @@
     <h2 class="text-2xl font-bold text-blue-700">Sippe</h2>
     <div class="bg-white border border-gray-300 p-8 w-full">
         <p class="text-gray-700">Gruppenname</p>
-        <p class="text-sm text-gray-500">Die Goldenen Löwenzähne</p>
+        <p class="text-sm text-gray-500">Funkelfüchse</p>
         <p class="text-gray-700 mt-2">Gruppenleiter</p>
         <p class="text-sm text-gray-500">Melina und Sebastian</p>
         <p class="text-gray-700 mt-2">Urzeit</p>
