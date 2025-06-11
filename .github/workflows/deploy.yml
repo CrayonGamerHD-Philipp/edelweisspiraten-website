@@ -20,9 +20,27 @@ jobs:
         run: |
           sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -tt -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} <<EOF
             cd ${{ secrets.DEPLOY_PATH }}
-            git pull origin master || git clone https://github.com/CrayonGamerHD-Philipp/edelweisspiraten-website.git .
+
+            if [ -d ".git" ]; then
+              git pull origin master
+            else
+              rm -rf ./*
+              git clone https://github.com/CrayonGamerHD-Philipp/edelweisspiraten-website.git .
+            fi
+
+            cd web
+
+            chown -R $USER:$USER .
+            chmod -R u+rw .
+
             npm install
-            npm run build
-            pm2 restart sveltekit || pm2 start npm --name sveltekit -- start
-            pm2 save
+
+            if npm run build; then
+              pm2 restart sveltekit || pm2 start npm --name sveltekit -- start
+              pm2 save
+            else
+              echo "Build failed – skipping PM2 start"
+              exit 1
+            fi
           EOF
+        
