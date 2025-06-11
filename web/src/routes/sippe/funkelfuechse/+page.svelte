@@ -43,5 +43,5 @@
         </div>
     </div>
 
-    <AppointmentPreview gruppe="sippe"/>
+    <AppointmentPreview gruppe="Sippe (ab 15 Jahren)"/>
 </section>
