@@ -19,19 +19,17 @@ jobs:
       - name: Upload & Deploy
         run: |
           sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -tt -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} <<EOF
+            mkdir -p ${{ secrets.DEPLOY_PATH }}
             cd ${{ secrets.DEPLOY_PATH }}
 
             if [ -d ".git" ]; then
               git pull origin master
             else
-              rm -rf ./*
+              find . -mindepth 1 -delete
               git clone https://github.com/CrayonGamerHD-Philipp/edelweisspiraten-website.git .
             fi
 
             cd web
-
-            chown -R $USER:$USER .
-            chmod -R u+rw .
 
             npm install
 
