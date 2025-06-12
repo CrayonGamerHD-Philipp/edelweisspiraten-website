@@ -105,6 +105,7 @@
                                     <p><strong>Typ:</strong> {getFileIcon(file.file)}</p>
                                     <p><strong>Stand:</strong> {formatDate(file.updated)}</p>
                                     <div class="flex flex-wrap gap-1">
+                                        <p><strong>Tags:</strong></p>
                                         {#each file.expand?.tags ?? [] as tag}
                                                 <span
                                                         class="px-2 py-0.5 rounded text-xs font-medium opacity-75 shadow-md"
