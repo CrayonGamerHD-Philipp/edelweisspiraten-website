@@ -8,7 +8,8 @@
         green: 'bg-green-600 hover:bg-green-700',
         blue: 'bg-blue-600 hover:bg-blue-700',
         indigo: 'bg-indigo-600 hover:bg-indigo-700',
-        red: 'bg-red-600 hover:bg-red-700'
+        red: 'bg-red-600 hover:bg-red-700',
+        pink: 'bg-pink-600 hover:bg-pink-700'
     }[color] || 'bg-gray-600 hover:bg-gray-700';
 
     async function copyEmail() {
