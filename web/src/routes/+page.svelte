@@ -8,29 +8,14 @@
     import Map from '$lib/components/Map.svelte';
     import StammHeader from '$lib/components/StammHeader.svelte';
 
-    let faqs = [
-        {
-            question: "Wie alt muss ich sein?",
-            answer: "Für die Meute: 7–10 Jahre. Für die Sippe: ab 11 Jahren.",
-        },
-        {
-            question: "Was kostet es?",
-            answer: "Der Jahresbeitrag beträgt aktuell 47€ – Schnuppern ist kostenlos.",
-        },
-        {
-            question: "Kann ich mir das mal Anschauen?",
-            answer: "Klar komm einfach vorbei! Montags ab 11 Jahren Freitags von 7-10 Jahren (Ab dem 15.08.2025)"
-        },
-        {
-            question: "Was brauche ich?",
-            answer: "Bequeme Kleidung, Neugier und Lust auf Abenteuer – das reicht!"
-        }
-    ];
+    export let data;
+    let faqs = data.faqs;
 
     function toggleFAQ(index) {
-        faqs = faqs.map((faq, i) =>
-            i === index ? { ...faq, open: !faq.open } : faq
-        );
+        faqs = faqs.map((faq, i) => ({
+            ...faq,
+            open: i === index ? !faq.open : faq.open
+        }));
     }
 </script>
 
@@ -119,15 +104,15 @@
     <h2 class="text-3xl font-bold text-gray-800 mb-6">Häufige Fragen</h2>
     <div class="space-y-4">
         {#each faqs as faq, index}
-            <div class="border border-gray-300 overflow-hidden bg-white">
+            <div class="border border-gray-300 overflow-hidden bg-white rounded">
                 <button
                         on:click={() => toggleFAQ(index)}
                         class="w-full flex justify-between items-center px-6 py-4 bg-gray-100 hover:bg-gray-200 transition text-left"
                 >
                     <span class="font-medium text-gray-800">{faq.question}</span>
                     <span class="text-xl text-gray-500">
-            {faq.open ? '−' : '+'}
-          </span>
+                    {faq.open ? '−' : '+'}
+                </span>
                 </button>
                 {#if faq.open}
                     <div class="px-6 py-4 border-t border-gray-300">
