@@ -55,7 +55,7 @@
                         <td class="p-2">{formatDate(file.updated)}</td>
                         <td class="p-2">
                             <a
-                                    href={`http://backend.edelweißpiraten.de/api/files/public_files/${file.id}/${file.file}`}
+                                    href={`https://backend.edelweißpiraten.de/api/files/public_files/${file.id}/${file.file}`}
                                     download
                                     class="inline-flex items-center justify-center gap-1 bg-blue-500 hover:bg-blue-600 text-white text-sm sm:text-base px-2 py-1 sm:px-3 rounded w-full sm:w-auto"
                             >
