@@ -34,7 +34,7 @@
     <h2 class="text-2xl mb-2 font-bold text-blue-700">Treffpunkt</h2>
     <Map/>
 
-    <div class="space-y-6 mt-20">
+    <div class="space-y-6 mt-20  mb-20">
         <div class="border-l-4 border-blue-400 bg-blue-50 p-4">
             <h3 class="text-xl font-bold text-blue-700">Sippe (11–14 Jahre)</h3>
             <p class="text-gray-700 mt-1"><span class="font-bold">Ansprechpartner</span><br>Melina und Sebastian</p>
