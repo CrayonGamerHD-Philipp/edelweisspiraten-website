@@ -10,7 +10,7 @@
     const now = new Date();
 
     onMount(async () => {
-        const pb = new PocketBase('http://backend.edelweißpiraten.de');
+        const pb = new PocketBase('https://backend.edelweißpiraten.de');
 
         // Tag-ID zur Gruppe finden
         const tags = await pb.collection('tags').getFullList();

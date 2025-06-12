@@ -3,7 +3,7 @@ import type { PageLoad } from './$types';
 
 export const prerender = false
 
-const pb = new PocketBase('http://backend.edelweißpiraten.de');
+const pb = new PocketBase('https://backend.edelweißpiraten.de');
 
 export const load: PageLoad = async () => {
     const appointments = await pb.collection('appointments').getFullList({
