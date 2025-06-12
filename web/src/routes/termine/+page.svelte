@@ -4,6 +4,7 @@
     import { browser } from '$app/environment';
 
     export let data;
+    const usedTagIds = new Set(data.appointments.flatMap(a => a.tags));
 
     let selectedYear = '';
     let selectedTags: string[] = [];
@@ -161,7 +162,7 @@
 
             {#if dropdownOpen}
                 <div class="absolute z-10 mt-2 w-56 bg-white border rounded shadow-md max-h-60 overflow-auto border-gray-300">
-                    {#each data.tags as tag}
+                    {#each data.tags.filter(tag => usedTagIds.has(tag.id)) as tag}
                         <label class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
                             <input
                                     type="checkbox"
