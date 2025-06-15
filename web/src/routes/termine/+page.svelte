@@ -19,6 +19,9 @@
     let lightboxOpen = false;
     let lightboxImageIndex = 0;
 
+    let touchStartX = 0;
+    let touchEndX = 0;
+
     let goto: typeof import('$app/navigation').goto;
 
     if (browser) {
@@ -33,6 +36,7 @@
         const tagParam = url.searchParams.getAll('tags');
 
         if (yearParam) selectedYear = yearParam;
+        else selectedYear = new Date().getFullYear().toString();
 
         if (tagParam.length > 0) {
             const lowerParam = tagParam.map(t => t.toLowerCase());
@@ -135,17 +139,42 @@
         if (event.key === 'ArrowRight') nextImage();
     }
 
-    onMount(() => {
-        document.addEventListener('click', handleClickOutside);
-        document.addEventListener('keydown', handleKeydown);
-        updateColumns();
-        window.addEventListener('resize', updateColumns);
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-            document.removeEventListener('keydown', handleKeydown);
-            window.removeEventListener('resize', updateColumns);
-        };
-    });
+    function handleTouchStart(event: TouchEvent) {
+        touchStartX = event.changedTouches[0].screenX;
+    }
+
+    function handleTouchEnd(event: TouchEvent) {
+        touchEndX = event.changedTouches[0].screenX;
+        handleSwipe();
+    }
+
+    function handleSwipe() {
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) nextImage();
+            else prevImage();
+        }
+    }
+
+    function scrollToNextUpcoming() {
+        const cards = document.querySelectorAll('[data-date]');
+        const now = new Date();
+        for (const el of cards) {
+            const date = new Date(el.getAttribute('data-date') || '');
+            if (date >= now) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                break;
+            }
+        }
+    }
+
+    function findPageOfNextAppointment() {
+        const now = new Date();
+        const index = filteredAppointments.findIndex(a => new Date(a.date) >= now);
+        if (index >= 0) {
+            currentPage = Math.floor(index / itemsPerPage) + 1;
+        }
+    }
 
     function updateColumns() {
         const width = window.innerWidth;
@@ -163,7 +192,22 @@
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
+
+    onMount(() => {
+        document.addEventListener('click', handleClickOutside);
+        document.addEventListener('keydown', handleKeydown);
+        updateColumns();
+        window.addEventListener('resize', updateColumns);
+        findPageOfNextAppointment();
+        setTimeout(scrollToNextUpcoming, 500);
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+            document.removeEventListener('keydown', handleKeydown);
+            window.removeEventListener('resize', updateColumns);
+        };
+    });
 </script>
+
 
 <section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
     <h1 class="text-2xl font-bold">Termine</h1>
@@ -202,7 +246,12 @@
     <!-- Termin-Karten -->
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {#each paginatedAppointments as appointment}
-            <div class="bg-white border border-gray-300 p-4 hover:shadow cursor-pointer" on:click={() => openAppointmentDetails(appointment)}>
+            <div
+                    data-date={appointment.date}
+                    class="bg-white border border-gray-300 p-4 hover:shadow cursor-pointer transition-opacity duration-300"
+                    class:opacity-50={new Date(appointment.date) < new Date()}
+                    on:click={() => openAppointmentDetails(appointment)}
+            >
                 <h2 class="text-xl font-semibold">{appointment.title}</h2>
                 <p class="text-sm text-gray-500 mb-2">
                     {new Date(appointment.date).toLocaleDateString()}
@@ -213,9 +262,9 @@
                 <p class="mb-2">{appointment.description}</p>
                 <div class="flex flex-wrap gap-2 mt-2">
                     {#each appointment.expand?.tags as tag}
-                        <span class="px-2 py-1 rounded text-xs font-medium opacity-75 shadow-md" style="background-color: {tag.color || '#999'}; color: white;">
-                            {tag.name}
-                        </span>
+                    <span class="px-2 py-1 rounded text-xs font-medium opacity-75 shadow-md" style="background-color: {tag.color || '#999'}; color: white;">
+                        {tag.name}
+                    </span>
                     {/each}
                 </div>
             </div>
@@ -261,16 +310,32 @@
         </div>
     {/if}
 
-    <!-- Bild-Lightbox -->
+    <!-- Lightbox mit Pfeilen + Touch -->
     {#if lightboxOpen}
-        <div class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-60">
-            <button class="absolute top-4 right-6 text-white text-4xl font-bold" on:click={closeLightbox}>×</button>
-            <button class="absolute left-4 text-white text-3xl" on:click={prevImage}>‹</button>
+        <div
+                class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-60"
+                on:touchstart={handleTouchStart}
+                on:touchend={handleTouchEnd}
+        >
+            <button
+                    class="absolute top-4 right-6 text-white font-bold text-4xl sm:text-5xl md:text-6xl"
+                    on:click={closeLightbox}
+            >×</button>
+
+            <button
+                    class="absolute left-4 text-white text-4xl sm:text-5xl md:text-6xl"
+                    on:click={prevImage}
+            >‹</button>
+
             <img
                     src={`https://backend.edelweißpiraten.de/api/files/appointments/${selectedAppointment.id}/${selectedAppointment.pictures[lightboxImageIndex]}`}
                     class="max-w-[90vw] max-h-[90vh] object-contain rounded"
             />
-            <button class="absolute right-4 text-white text-3xl" on:click={nextImage}>›</button>
+
+            <button
+                    class="absolute right-4 text-white text-4xl sm:text-5xl md:text-6xl"
+                    on:click={nextImage}
+            >›</button>
         </div>
     {/if}
 

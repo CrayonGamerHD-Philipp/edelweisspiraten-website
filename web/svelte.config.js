@@ -7,7 +7,7 @@ export default {
 			out: 'build'
 		}),
 		paths: {
-			base: '', // falls du im Unterverzeichnis deployst, hier anpassen
+			base: '',
 		}
 	},
 	preprocess: vitePreprocess()
