@@ -40,8 +40,7 @@
                     on:click={() => shareOpen = true}
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM13.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.5 6a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.5 5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM13.5 11a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM13.5 10a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/>
-                    <path d="M11.212 3.227l-6.487 2.81.574 1.314 6.487-2.81-.574-1.314zm-.638 6.716l-6.487 2.81.574 1.314 6.487-2.81-.574-1.314z"/>
+                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
                 </svg>
                 Teilen
             </button>
@@ -69,13 +68,6 @@
                     on:close={() => selectedIndex = null}
             />
         {/if}
-
-        <button
-                class="mt-8 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                on:click={() => shareOpen = true}
-        >
-            Teilen 🔗
-        </button>
 
         {#if shareOpen}
             <div class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
