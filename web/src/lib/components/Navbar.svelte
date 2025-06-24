@@ -1,10 +1,30 @@
 <script>
-    let open = false;
-    let sippeOpen = false;
+    import { onMount } from 'svelte';
 
-    const toggleSippe = () => {
-        sippeOpen = !sippeOpen;
+    let open = false;
+    let gruppenOpen = false;
+
+    const toggleGruppen = () => {
+        gruppenOpen = !gruppenOpen;
     };
+
+    function handleClickOutside(event) {
+        const dropdown = document.getElementById('gruppen-dropdown');
+        const button = document.getElementById('gruppen-button');
+        if (
+            dropdown &&
+            !dropdown.contains(event.target) &&
+            button &&
+            !button.contains(event.target)
+        ) {
+            gruppenOpen = false;
+        }
+    }
+
+    onMount(() => {
+        document.addEventListener('click', handleClickOutside);
+        return () => document.removeEventListener('click', handleClickOutside);
+    });
 </script>
 
 <nav class="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
@@ -15,28 +35,42 @@
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex gap-6 items-center relative">
-                <a href="/meute" class="nav-link">Meute</a>
-
-                <!-- Dropdown Trigger -->
+                <!-- Gruppen Dropdown -->
                 <div class="relative">
-                    <button class="nav-link flex items-center gap-2" on:click={toggleSippe}>
-                        Sippe
+                    <button
+                            class="nav-link flex items-center gap-2"
+                            on:click={toggleGruppen}
+                            id="gruppen-button"
+                    >
+                        Gruppen
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M19 9l-7 7-7-7" />
+                            <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 9l-7 7-7-7"
+                            />
                         </svg>
                     </button>
 
-                    <!-- Dropdown Content -->
-                    {#if sippeOpen}
-                        <div class="absolute top-full left-0 bg-white border border-gray-200 shadow-md z-50 w-64 p-3">
-                            <a href="/sippe/die-goldenen-loewenzaehne" class="dropdown-link" on:click={() => (sippeOpen = false)}>Die goldenen Löwenzähne</a>
-                            <hr class="border-gray-200 mt-3 mb-3" />
-                            <a href="/sippe/funkelfuechse" class="dropdown-link" on:click={() => (sippeOpen = false)}>Funkelfüchse</a>
+                    {#if gruppenOpen}
+                        <div
+                                id="gruppen-dropdown"
+                                class="absolute top-full left-0 bg-white border border-gray-200 shadow-md z-50 w-64 px-4 py-3"
+                        >
+                            <p class="text-xs uppercase text-gray-400 font-semibold mb-1">Meute</p>
+                            <a href="/meute" class="dropdown-link pl-2 mb-2 block" on:click={() => (gruppenOpen = false)}>Meute</a>
+
+                            <hr class="border-gray-200 my-2" />
+
+                            <p class="text-xs uppercase text-gray-400 font-semibold mb-1">Sippe</p>
+                            <a href="/sippe/die-goldenen-loewenzaehne" class="dropdown-link pl-4 block" on:click={() => (gruppenOpen = false)}>Die goldenen Löwenzähne</a>
+                            <a href="/sippe/funkelfuechse" class="dropdown-link pl-4 mt-2 block" on:click={() => (gruppenOpen = false)}>Funkelfüchse</a>
                         </div>
                     {/if}
                 </div>
 
+                <a href="/galerie" class="nav-link">Galerie</a>
                 <a href="/termine" class="nav-link">Termine</a>
                 <a href="/kontakt" class="nav-link">Kontakt</a>
                 <a href="/download" class="nav-link">Download</a>
@@ -46,8 +80,12 @@
             <div class="md:hidden">
                 <button on:click={() => (open = !open)} class="text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d={open ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+                        <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d={open ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+                        />
                     </svg>
                 </button>
             </div>
@@ -58,32 +96,24 @@
     {#if open}
         <div class="md:hidden px-4 pb-4 bg-white border-t border-gray-200 space-y-3">
             <p class="text-sm text-gray-500 uppercase font-semibold tracking-wide mt-2">Gruppen</p>
-            <div class="flex flex-col space-y-2 ml-2">
-                <p class="text-sm text-gray-500 uppercase font-semibold tracking-wide mt-2">Meuten</p>
-                <div class="flex flex-col space-y-2 ml-2">
-                    <a href="/meute" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Meute</a>
-                </div>
+            <div class="ml-2">
+                <p class="text-xs uppercase text-gray-400 font-semibold mt-2">Meute</p>
+                <a href="/meute" class="mobile-link text-lg py-2 block" on:click={() => (open = false)}>Meute</a>
 
-                <p class="text-sm text-gray-500 uppercase font-semibold tracking-wide mt-2">Sippen</p>
-                <div class="flex flex-col space-y-2 ml-2">
-                    <a href="/sippe/die-goldenen-loewenzaehne" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Die goldenen Löwenzähne</a>
-                    <a href="/sippe/funkelfuechse" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Funkelfüchse</a>
-                </div>
+                <p class="text-xs uppercase text-gray-400 font-semibold mt-4">Sippe</p>
+                <a href="/sippe/die-goldenen-loewenzaehne" class="mobile-link text-lg py-2 block" on:click={() => (open = false)}>Die goldenen Löwenzähne</a>
+                <a href="/sippe/funkelfuechse" class="mobile-link text-lg py-2 block" on:click={() => (open = false)}>Funkelfüchse</a>
             </div>
 
-            <hr class="my-3 border-gray-300" />
+            <hr class="my-4 border-gray-300" />
 
-            <a href="/termine" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Termine</a>
-
-            <hr class="my-3 border-gray-300" />
-
-            <a href="/kontakt" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Kontakt</a>
-
-            <hr class="my-3 border-gray-300" />
-
-            <a href="/download" class="mobile-link text-lg py-2" on:click={() => (open = false)}>Download</a>
+            <a href="/galerie" class="mobile-link text-lg block" on:click={() => (open = false)}>Galerie</a>
+            <a href="/termine" class="mobile-link text-lg block" on:click={() => (open = false)}>Termine</a>
+            <a href="/kontakt" class="mobile-link text-lg block" on:click={() => (open = false)}>Kontakt</a>
+            <a href="/download" class="mobile-link text-lg block" on:click={() => (open = false)}>Download</a>
         </div>
     {/if}
+
 
     <style>
         .nav-link {
