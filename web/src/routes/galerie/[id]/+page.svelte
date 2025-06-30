@@ -17,7 +17,7 @@
 
     onMount(async () => {
         appointment = await fetchAppointmentById(id);
-        currentUrl = `https://edelweißpiraten.de/galerie/${appointment.id}`;
+        currentUrl = `https://edelweisspiraten-bremen.de/galerie/${appointment.id}`;
         qrDataUrl = await QRCode.toDataURL(currentUrl);
     });
 </script>
@@ -87,13 +87,13 @@
                         <div class="bg-gray-100 rounded p-2 flex items-center justify-between gap-2 mt-4">
                             <input
                                     readonly
-                                    value={`https://edelweißpiraten.de/galerie/${appointment.id}`}
+                                    value={`https://edelweisspiraten-bremen.de/galerie/${appointment.id}`}
                                     class="flex-1 bg-transparent outline-none text-sm truncate"
                             />
                             <button
                                     class="px-3 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700"
                                     on:click={async () => {
-            await navigator.clipboard.writeText(`https://edelweißpiraten.de/galerie/${appointment.id}`);
+            await navigator.clipboard.writeText(`https://edelweisspiraten-bremen.de/galerie/${appointment.id}`);
             alert('Link kopiert!');
           }}
                             >
@@ -128,7 +128,7 @@
                             <a
                                     class="w-12 h-12 bg-neutral-900 rounded-full flex items-center justify-center hover:bg-green-600"
                                     title="Per WhatsApp teilen"
-                                    href={`https://wa.me/?text=${encodeURIComponent(`Schau dir das an: https://edelweißpiraten.de/galerie/${appointment.id}`)}`}
+                                    href={`https://wa.me/?text=${encodeURIComponent(`Schau dir das an: https://edelweisspiraten-bremen.de/galerie/${appointment.id}`)}`}
                                     target="_blank"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white"
@@ -141,7 +141,7 @@
                             <a
                                     class="w-12 h-12 bg-neutral-900 rounded-full flex items-center justify-center hover:bg-blue-600"
                                     title="Per E-Mail teilen"
-                                    href={`mailto:?subject=Bilder von ${appointment.title}&body=Hier geht's zur Galerie: https://edelweißpiraten.de/galerie/${appointment.id}`}
+                                    href={`mailto:?subject=Bilder von ${appointment.title}&body=Hier geht's zur Galerie: https://edelweisspiraten-bremen.de/galerie/${appointment.id}`}
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white"
                                      viewBox="0 0 16 16">
