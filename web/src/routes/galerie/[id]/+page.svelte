@@ -128,7 +128,7 @@
                             <a
                                     class="w-12 h-12 bg-neutral-900 rounded-full flex items-center justify-center hover:bg-green-600"
                                     title="Per WhatsApp teilen"
-                                    href={`https://wa.me/?text=${encodeURIComponent(`Schau dir das an: https://edelweisspiraten-bremen.de/galerie/${appointment.id}`)}`}
+                                    href={`https://wa.me/?text=${encodeURIComponent(`Schau dir die Bilder von der Aktion ${appointment.title} an: https://edelweisspiraten-bremen.de/galerie/${appointment.id}`)}`}
                                     target="_blank"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white"
