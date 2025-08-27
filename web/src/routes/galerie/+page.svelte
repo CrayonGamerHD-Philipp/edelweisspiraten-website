@@ -23,7 +23,7 @@
                 <img src={getFirstImage(appointment)} alt="Bild" class="w-full h-48 object-cover rounded-t"/>
                 <div class="p-4">
                     <h2 class="font-semibold">{appointment.title}</h2>
-                    <p class="text-sm text-gray-500">{new Date(appointment.date).toLocaleDateString()}</p>
+                    <p class="text-sm text-gray-500">{new Date(appointment.date).toLocaleDateString()}{#if appointment.end_date}&nbsp;–&nbsp;{new Date(appointment.end_date).toLocaleDateString()}{/if}</p>
                 </div>
             </a>
         {/each}
