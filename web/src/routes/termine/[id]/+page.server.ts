@@ -2,6 +2,7 @@ import type { PageServerLoad } from './$types';
 import PocketBase from 'pocketbase';
 import { error } from '@sveltejs/kit';
 
+export const prerender = false;
 
 export const load: PageServerLoad = async ({ params }) => {
     const { id } = params;
