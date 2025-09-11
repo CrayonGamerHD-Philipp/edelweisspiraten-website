@@ -59,7 +59,7 @@
                                 class="absolute top-full left-0 bg-white border border-gray-200 shadow-md z-50 w-64 px-4 py-3"
                         >
                             <p class="text-xs uppercase text-gray-400 font-semibold mb-1">Meute</p>
-                            <a href="/meute" class="dropdown-link pl-2 mb-2 block" on:click={() => (gruppenOpen = false)}>Meute</a>
+                            <a href="/meute" class="dropdown-link pl-2 mb-2 block" on:click={() => (gruppenOpen = false)}>Sportliche Panther</a>
 
                             <hr class="border-gray-200 my-2" />
 
@@ -98,7 +98,7 @@
             <p class="text-sm text-gray-500 uppercase font-semibold tracking-wide mt-2">Gruppen</p>
             <div class="ml-2">
                 <p class="text-xs uppercase text-gray-400 font-semibold mt-2">Meute</p>
-                <a href="/meute" class="mobile-link text-lg py-2 block" on:click={() => (open = false)}>Meute</a>
+                <a href="/meute" class="mobile-link text-lg py-2 block" on:click={() => (open = false)}>Sportliche Panther</a>
 
                 <p class="text-xs uppercase text-gray-400 font-semibold mt-4">Sippe</p>
                 <a href="/sippe/die-goldenen-loewenzaehne" class="mobile-link text-lg py-2 block" on:click={() => (open = false)}>Die goldenen Löwenzähne</a>
