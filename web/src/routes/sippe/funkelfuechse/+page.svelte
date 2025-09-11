@@ -11,15 +11,28 @@
 
 <section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
     <h2 class="text-2xl font-bold text-pink-700">Sippe</h2>
-    <div class="bg-white border border-gray-300 p-8 w-full">
-        <p class="text-gray-700">Gruppenname</p>
-        <p class="text-sm text-gray-500">Funkelfüchse</p>
-        <p class="text-gray-700 mt-2">Uhrzeit</p>
-        <p class="text-sm text-gray-500">Freitags 18 Uhr - 19 Uhr/19:30 Uhr</p>
-        <p class="text-gray-700 mt-2">Ort</p>
-        <p class="text-sm text-gray-500">Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
-        <p class="text-gray-700 mt-2">Alter</p>
-        <p class="text-sm text-gray-500">ab 15 Jahren</p>
+    <div class="bg-white border border-gray-300 p-8 w-full flex flex-col md:flex-row gap-6 items-start">
+        <div class="flex-1">
+            <p class="text-gray-700">Gruppenname</p>
+            <p class="text-sm text-gray-500">Funkelfüchse</p>
+
+            <p class="text-gray-700 mt-2">Uhrzeit</p>
+            <p class="text-sm text-gray-500">Freitags 18 Uhr - 19 Uhr/19:30 Uhr</p>
+
+            <p class="text-gray-700 mt-2">Ort</p>
+            <p class="text-sm text-gray-500">Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
+
+            <p class="text-gray-700 mt-2">Alter</p>
+            <p class="text-sm text-gray-500">ab 15 Jahren</p>
+        </div>
+
+        <div class="w-full md:w-1/3 flex-shrink-0">
+            <img
+                    src="/sippe_funkel_fuechse.avif"
+                    alt="Gruppenbild Sportliche Panther"
+                    class="w-full h-auto object-cover rounded"
+            />
+        </div>
     </div>
 
     <h2 class="text-2xl mb-2 font-bold text-pink-700">Das sind wir</h2>
