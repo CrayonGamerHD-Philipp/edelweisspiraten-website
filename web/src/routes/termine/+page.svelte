@@ -30,6 +30,41 @@
         });
     }
 
+    // --- Helpers ---
+    function fmtDateRange(startStr: string, endStr?: string | null) {
+        const s = new Date(startStr);
+        const e = endStr ? new Date(endStr) : null;
+
+        const full = new Intl.DateTimeFormat('de-DE', {
+            weekday: 'short', day: '2-digit', month: 'long', year: 'numeric'
+        });
+        const shortDMY = new Intl.DateTimeFormat('de-DE', {
+            day: '2-digit', month: 'long', year: 'numeric'
+        });
+
+        if (e) {
+            if (s.toDateString() === e.toDateString()) return full.format(s);
+            if (s.getMonth() === e.getMonth() && s.getFullYear() === e.getFullYear()) {
+                const d = String(s.getDate()).padStart(2, '0');
+                return `${d}.–${shortDMY.format(e)}`;
+            }
+            return `${full.format(s)} – ${full.format(e)}`;
+        }
+        return full.format(s);
+    }
+
+    function getTextColor(bg?: string | null) {
+        if (!bg) return '#1f2937';
+        const m = bg.trim().match(/^#?([\da-f]{6})$/i);
+        if (!m) return '#1f2937';
+        const hex = m[1];
+        const r = parseInt(hex.slice(0,2),16)/255;
+        const g = parseInt(hex.slice(2,4),16)/255;
+        const b = parseInt(hex.slice(4,6),16)/255;
+        const lum = 0.2126*r + 0.7152*g + 0.0722*b;
+        return lum > 0.6 ? '#111827' : '#ffffff';
+    }
+
     $: if (!filtersInitialized && data?.tags && browser) {
         const url = $page.url;
         const yearParam = url.searchParams.get('year');
@@ -133,8 +168,12 @@
     }
 
     function handleKeydown(event: KeyboardEvent) {
+        if (event.key === 'Escape') {
+            closeLightbox();
+            closeDetailsPopup();
+            closeDropdown();
+        }
         if (!lightboxOpen) return;
-        if (event.key === 'Escape') closeLightbox();
         if (event.key === 'ArrowLeft') prevImage();
         if (event.key === 'ArrowRight') nextImage();
     }
@@ -208,63 +247,81 @@
     });
 </script>
 
+<section class="max-w-6xl mx-auto px-6 py-12 space-y-6">
+    <header class="flex items-center justify-between gap-3 flex-wrap">
+        <h1 class="text-2xl font-bold">Termine</h1>
 
-<section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
-    <h1 class="text-2xl font-bold">Termine</h1>
+        <!-- Filter -->
+        <div class="flex flex-wrap gap-3 items-center">
+            <select bind:value={selectedYear} class="border border-gray-300 px-3 py-2 text-sm">
+                <option value="">Alle Jahre</option>
+                {#each data.years as year}
+                    <option value={year.toString()}>{year}</option>
+                {/each}
+            </select>
 
-    <!-- Filter -->
-    <div class="flex flex-wrap gap-4 items-center">
-        <select bind:value={selectedYear} class="border rounded h-10 min-w-[12rem] p-2 border-gray-300">
-            <option value="">Alle Jahre</option>
-            {#each data.years as year}
-                <option value={year.toString()}>{year}</option>
-            {/each}
-        </select>
+            <div class="relative inline-block" id="tag-dropdown">
+                <button
+                        class="border border-gray-300 px-3 py-2 text-sm bg-white"
+                        aria-haspopup="listbox"
+                        aria-expanded={dropdownOpen}
+                        on:click={() => dropdownOpen = !dropdownOpen}
+                >
+                    {selectedTags.length > 0 ? `${selectedTags.length} Gruppe(n)` : 'Gruppen auswählen'}
+                </button>
 
-        <div class="relative inline-block h-10 min-w-[12rem] border-gray-300" id="tag-dropdown">
-            <button class="border rounded px-4 py-2 bg-white border-gray-300" on:click={() => dropdownOpen = !dropdownOpen}>
-                {selectedTags.length > 0 ? `${selectedTags.length} Gruppe(n) gewählt` : 'Gruppen auswählen'}
+                {#if dropdownOpen}
+                    <div
+                            class="absolute right-0 z-10 mt-2 w-56 bg-white border border-gray-300 shadow-md max-h-60 overflow-auto"
+                            role="listbox"
+                    >
+                        {#each data.tags.filter(tag => usedTagIds.has(tag.id)) as tag}
+                            <label class="flex items-center px-3 py-2 hover:bg-gray-50 cursor-pointer text-sm">
+                                <input
+                                        type="checkbox"
+                                        class="mr-2"
+                                        checked={selectedTags.includes(tag.id)}
+                                        on:change={() => toggleTag(tag.id)}
+                                />
+                                <span>{tag.name}</span>
+                            </label>
+                        {/each}
+                    </div>
+                {/if}
+            </div>
+
+            <button class="text-sm underline text-gray-600 hover:text-blue-800"
+                    on:click={resetFilters}>
+                Filter zurücksetzen
             </button>
-
-            {#if dropdownOpen}
-                <div class="absolute z-10 mt-2 w-56 bg-white border rounded shadow-md max-h-60 overflow-auto border-gray-300">
-                    {#each data.tags.filter(tag => usedTagIds.has(tag.id)) as tag}
-                        <label class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                            <input type="checkbox" class="mr-2" checked={selectedTags.includes(tag.id)} on:change={() => toggleTag(tag.id)} />
-                            <span>{tag.name}</span>
-                        </label>
-                    {/each}
-                </div>
-            {/if}
         </div>
-
-        <button class="text-sm underline text-gray-600 hover:text-blue-800 ml-1 mt-1" on:click={resetFilters}>
-            Filter zurücksetzen
-        </button>
-    </div>
+    </header>
 
     <!-- Termin-Karten -->
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {#each paginatedAppointments as appointment}
             <div
                     data-date={appointment.date}
-                    class="bg-white border border-gray-300 p-4 hover:shadow cursor-pointer transition-opacity duration-300"
+                    class="bg-white border border-gray-200 p-4 transition hover:-translate-y-0.5 hover:shadow-md cursor-pointer"
                     class:opacity-50={new Date(appointment.date) < new Date()}
                     on:click={() => openAppointmentDetails(appointment)}
             >
-                <h2 class="text-xl font-semibold">{appointment.title}</h2>
+                <h2 class="text-lg font-semibold text-gray-900">{appointment.title}</h2>
                 <p class="text-sm text-gray-500 mb-2">
-                    {new Date(appointment.date).toLocaleDateString()}
-                    {#if appointment.end_date}
-                        &nbsp;–&nbsp;{new Date(appointment.end_date).toLocaleDateString()}
-                    {/if}
+                    {fmtDateRange(appointment.date, appointment.end_date)}
                 </p>
-                <p class="mb-2">{appointment.description}</p>
+                {#if appointment.description}
+                    <p class="mb-2 text-gray-700 line-clamp-3">{appointment.description}</p>
+                {/if}
                 <div class="flex flex-wrap gap-2 mt-2">
                     {#each appointment.expand?.tags as tag}
-                    <span class="px-2 py-1 rounded text-xs font-medium opacity-75 shadow-md" style="background-color: {tag.color || '#999'}; color: white;">
-                        {tag.name}
-                    </span>
+                        <span
+                                class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
+                                style="background-color: {tag.color || '#e5e7eb'}; color: {getTextColor(tag.color)}; border: 1px solid {tag.color || '#e5e7eb'};"
+                                title={tag.name}
+                        >
+                            {tag.name}
+                        </span>
                     {/each}
                 </div>
             </div>
@@ -274,25 +331,30 @@
     <!-- Termin-Detail-Popup -->
     {#if selectedAppointment}
         <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm" on:click={handleOverlayClick}>
-            <div id="appointment-popup" class="bg-white max-w-2xl w-[95%] max-h-[90vh] overflow-y-auto p-6 rounded shadow-lg relative" on:click|stopPropagation>
+            <div id="appointment-popup" class="bg-white w-[95%] max-w-2xl max-h-[90vh] overflow-y-auto p-6 border border-gray-200 relative" on:click|stopPropagation>
                 <button class="absolute top-3 right-4 text-gray-700 hover:text-red-600 text-3xl font-bold" on:click={closeDetailsPopup}>×</button>
 
                 <h2 class="text-2xl font-bold mb-2">{selectedAppointment.title}</h2>
-                <p class="text-sm text-gray-500 mb-2">
-                    {new Date(selectedAppointment.date).toLocaleDateString()}
-                    {#if selectedAppointment.end_date}
-                        &nbsp;–&nbsp;{new Date(selectedAppointment.end_date).toLocaleDateString()}
-                    {/if}
+                <p class="text-sm text-gray-500 mb-3">
+                    {fmtDateRange(selectedAppointment.date, selectedAppointment.end_date)}
                 </p>
-                <p class="mb-4">{selectedAppointment.description}</p>
 
-                <div class="flex flex-wrap gap-2 mb-4">
-                    {#each selectedAppointment.expand?.tags ?? [] as tag}
-                        <span class="px-2 py-1 rounded text-xs font-medium opacity-75 shadow-md" style="background-color: {tag.color || '#999'}; color: white;">
-                            {tag.name}
-                        </span>
-                    {/each}
-                </div>
+                {#if selectedAppointment.expand?.tags?.length}
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        {#each selectedAppointment.expand.tags as tag}
+                            <span
+                                    class="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
+                                    style="background-color: {tag.color || '#e5e7eb'}; color: {getTextColor(tag.color)}; border: 1px solid {tag.color || '#e5e7eb'};"
+                            >
+                                {tag.name}
+                            </span>
+                        {/each}
+                    </div>
+                {/if}
+
+                {#if selectedAppointment.description}
+                    <p class="mb-4 text-gray-800 whitespace-pre-line">{selectedAppointment.description}</p>
+                {/if}
 
                 {#if selectedAppointment.pictures?.length}
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -300,7 +362,7 @@
                             <img
                                     src={`https://backend.edelweißpiraten.de/api/files/appointments/${selectedAppointment.id}/${pic}`}
                                     alt="Bild"
-                                    class="rounded shadow object-cover w-full h-48 cursor-zoom-in"
+                                    class="border border-gray-200 object-cover w-full h-48 cursor-zoom-in"
                                     on:click={() => openLightbox(i)}
                             />
                         {/each}
@@ -329,7 +391,8 @@
 
             <img
                     src={`https://backend.edelweißpiraten.de/api/files/appointments/${selectedAppointment.id}/${selectedAppointment.pictures[lightboxImageIndex]}`}
-                    class="max-w-[90vw] max-h-[90vh] object-contain rounded"
+                    class="max-w-[90vw] max-h-[90vh] object-contain"
+                    alt="Bild groß"
             />
 
             <button
@@ -342,11 +405,23 @@
     <!-- Pagination -->
     {#if totalPages > 1}
         <div class="flex justify-center gap-2 mt-6">
-            <button on:click={() => currentPage = Math.max(currentPage - 1, 1)} class="px-3 py-1 border rounded" disabled={currentPage === 1}>◀</button>
+            <button on:click={() => currentPage = Math.max(currentPage - 1, 1)} class="px-3 py-1 border text-sm" disabled={currentPage === 1}>◀</button>
             {#each Array(totalPages).fill(0).map((_, i) => i + 1) as page}
-                <button on:click={() => currentPage = page} class="px-3 py-1 border rounded {currentPage === page ? 'bg-blue-500 text-white' : ''}">{page}</button>
+                <button
+                        on:click={() => currentPage = page}
+                        class="px-3 py-1 border text-sm {currentPage === page ? 'bg-blue-600 text-white' : 'bg-white'}"
+                >{page}</button>
             {/each}
-            <button on:click={() => currentPage = Math.min(currentPage + 1, totalPages)} class="px-3 py-1 border rounded" disabled={currentPage === totalPages}>▶</button>
+            <button on:click={() => currentPage = Math.min(currentPage + 1, totalPages)} class="px-3 py-1 border text-sm" disabled={currentPage === totalPages}>▶</button>
         </div>
     {/if}
 </section>
+
+<style>
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
