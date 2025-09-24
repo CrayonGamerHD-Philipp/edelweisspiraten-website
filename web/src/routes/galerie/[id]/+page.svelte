@@ -1,39 +1,57 @@
 <script lang="ts">
-    import { fetchAppointmentById } from '$lib/api/appointments';
     import Lightbox from '$lib/components/Lightbox.svelte';
     import Share from '$lib/components/Share.svelte';
-    import { page } from '$app/stores';
-    import { onMount } from 'svelte';
+    import { page as pageStore } from '$app/stores';
 
-    let appointment;
+    export let data: {
+        appointment: any;
+        firstImage: string | null;
+        pageUrl: string;
+    };
+
+    const { appointment, firstImage, pageUrl } = data;
+
     let selectedIndex: number | null = null;
     let shareOpen = false;
 
     const backendUrl = 'https://backend.edelweißpiraten.de';
-
-    $: id = $page.params.id;
-    let currentUrl = '';
-
-    onMount(async () => {
-        appointment = await fetchAppointmentById(id);
-        currentUrl = `https://edelweisspiraten-bremen.de/galerie/${appointment.id}`;
-    });
 </script>
+
+<svelte:head>
+    <!-- Grundlegendes -->
+    <title>{appointment?.title ?? 'Galerie'}</title>
+    <meta name="description" content={appointment?.description ?? 'Bildergalerie'} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={`Bilder von ${appointment?.title ?? 'unserer Aktion'}`} />
+    <meta property="og:description" content={appointment?.description ?? ''} />
+    <meta property="og:url" content={pageUrl} />
+    {#if firstImage}
+        <meta property="og:image" content={firstImage} />
+        <!-- Optional: Größe + Typ helfen manchen Crawlern -->
+        <meta property="og:image:alt" content={`Vorschaubild: ${appointment.title}`} />
+    {/if}
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content={firstImage ? 'summary_large_image' : 'summary'} />
+    <meta name="twitter:title" content={`Bilder von ${appointment?.title ?? 'unserer Aktion'}`} />
+    <meta name="twitter:description" content={appointment?.description ?? ''} />
+    {#if firstImage}
+        <meta name="twitter:image" content={firstImage} />
+    {/if}
+</svelte:head>
 
 <section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
     {#if appointment}
         <div class="flex items-center justify-between">
             <a href="/galerie" class="text-sm text-blue-600 hover:underline flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H3.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L3.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
-                </svg>
+                <!-- … dein Pfeil-Icon … -->
                 Zurück
             </a>
 
             <button class="text-sm text-blue-600 hover:underline flex items-center gap-1" on:click={() => shareOpen = true}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
-                </svg>
+                <!-- … dein Share-Icon … -->
                 Teilen
             </button>
         </div>
@@ -67,9 +85,9 @@
         {/if}
 
         <Share
-                url={currentUrl}
+                url={pageUrl}
                 title={`Bilder von ${appointment.title}`}
-                whatsappMessage={`Schau dir die Bilder von der Aktion ${appointment.title} an: ${currentUrl}`}
+                whatsappMessage={`Schau dir die Bilder von der Aktion ${appointment.title} an: ${pageUrl}`}
                 open={shareOpen}
                 onClose={() => shareOpen = false}
         />
