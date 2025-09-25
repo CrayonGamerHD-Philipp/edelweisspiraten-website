@@ -29,11 +29,9 @@
     <meta property="og:url" content={pageUrl} />
     {#if firstImage}
         <meta property="og:image" content={firstImage} />
-        <!-- Optional: Größe + Typ helfen manchen Crawlern -->
         <meta property="og:image:alt" content={`Vorschaubild: ${appointment.title}`} />
     {/if}
 
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content={firstImage ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={`Bilder von ${appointment?.title ?? 'unserer Aktion'}`} />
     <meta name="twitter:description" content={appointment?.description ?? ''} />
@@ -46,12 +44,16 @@
     {#if appointment}
         <div class="flex items-center justify-between">
             <a href="/galerie" class="text-sm text-blue-600 hover:underline flex items-center gap-1">
-                <!-- … dein Pfeil-Icon … -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+                </svg>
                 Zurück
             </a>
 
             <button class="text-sm text-blue-600 hover:underline flex items-center gap-1" on:click={() => shareOpen = true}>
-                <!-- … dein Share-Icon … -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5m-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3"/>
+                </svg>
                 Teilen
             </button>
         </div>
