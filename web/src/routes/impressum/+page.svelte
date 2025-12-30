@@ -7,7 +7,7 @@
 <section class="max-w-5xl mx-auto py-12 px-6">
     <h2 class="font-bold mb-2">Impressum</h2>
     <h2 id="m46" class="font-bold mb-2">Diensteanbieter</h2>
-    <p>Stamm Götz von Berlichingen</p>
+    <p>Stamm Edelweißpiraten</p>
     <p>Christliche Pfadfinderschaft Deutschland e.V.</p>
     <p>Drakenburger Str. 42</p>
     <p class="mb-2">28207 Bremen</p>
