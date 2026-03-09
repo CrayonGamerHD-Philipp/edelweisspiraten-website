@@ -8,8 +8,8 @@
         <div class="h-1 w-2/3 mx-auto md:ml-auto md:mr-0 my-2 bg-black rounded bg-white"></div>
         <p class="text-base md:text-lg leading-tight text-white font-bold">
             in der <br />
-            Auferstehungsgemeinde <br />
-            Bremen Hastedt
+            Ev. Kirchengemeinde <br />
+            Bremen-Hastedt
         </p>
     </div>
 
