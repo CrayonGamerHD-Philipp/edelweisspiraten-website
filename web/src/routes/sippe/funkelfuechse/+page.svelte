@@ -20,7 +20,7 @@
             <p class="text-sm text-gray-500">Freitags 18 Uhr - 19 Uhr/19:30 Uhr</p>
 
             <p class="text-gray-700 mt-2">Ort</p>
-            <p class="text-sm text-gray-500">Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
+            <p class="text-sm text-gray-500">Ev. Kirchengemeinde Bremen-Hastedt</p>
 
             <p class="text-gray-700 mt-2">Alter</p>
             <p class="text-sm text-gray-500">ab 15 Jahren</p>

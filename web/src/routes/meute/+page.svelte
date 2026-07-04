@@ -24,10 +24,10 @@
             <p class="text-sm text-gray-500">Freitags 16:30 Uhr - 18:00 Uhr</p>
 
             <p class="text-gray-700 mt-2">Ort</p>
-            <p class="text-sm text-gray-500">Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
+            <p class="text-sm text-gray-500">Ev. Kirchengemeinde Bremen-Hastedt</p>
 
             <p class="text-gray-700 mt-2">Alter</p>
-            <p class="text-sm text-gray-500">7 - 10 Jahre</p>
+            <p class="text-sm text-gray-500">6 - 10 Jahre</p>
         </div>
 
         <div class="w-full md:w-1/3 flex-shrink-0">

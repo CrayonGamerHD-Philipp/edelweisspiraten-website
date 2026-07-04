@@ -23,7 +23,7 @@
     <div class="space-y-2">
         <h2 class="text-2xl font-semibold text-gray-800">Unser Treffpunkt</h2>
         <p class="text-gray-600">
-            Evangelische Auferstehungsgemeinde Bremen-Hastedt<br/>
+            Ev. Kirchengemeinde Bremen-Hastedt<br/>
             Stamm Edelweißpiraten<br/>
             Drakenburger Str. 42<br/>
             28207 Bremen
@@ -125,7 +125,7 @@
         <!-- Stammesführung -->
         <div class="border-l-4 border-red-400 bg-red-50 p-4">
             <h3 class="text-xl font-bold text-red-700">Stammesführung</h3>
-            <p class="text-gray-700 mt-1"><span class="font-bold">Ansprechpartner</span><br>Melina, Emma und Lina</p>
+            <p class="text-gray-700 mt-1"><span class="font-bold">Ansprechpartner</span><br>Larissa, Lina und Matilda</p>
             <p class="text-gray-700 mt-1"><span class="font-bold">E-Mail</span><br>stafues@edelweisspiraten-bremen.de
             </p>
             <EmailButtons email="stafues@edelweisspiraten-bremen.de" color="red"/>
