@@ -28,12 +28,40 @@
     </div>
 </section>
 
+<!-- Ferienhinweis -->
+<section class="max-w-5xl mx-auto px-6 pt-10">
+    <div class="border-l-4 border-amber-500 bg-amber-50 p-6">
+        <p class="text-sm font-semibold uppercase tracking-wide text-amber-800">Ferienhinweis</p>
+        <h2 class="mt-2 text-2xl font-bold text-gray-900">In den Ferien finden keine Gruppenstunden statt.</h2>
+        <div class="mt-3 grid gap-2 text-gray-700 sm:grid-cols-3">
+            <p>
+                <a href="/meute" class="font-semibold text-green-700 underline decoration-green-300 underline-offset-4 hover:text-green-800">
+                    Meute
+                </a>
+                <span class="block text-sm text-gray-600">startet wieder am 21.08.</span>
+            </p>
+            <p>
+                <a href="/sippe/die-goldenen-loewenzaehne" class="font-semibold text-blue-700 underline decoration-blue-300 underline-offset-4 hover:text-blue-800">
+                    Die Goldenen Löwenzähne
+                </a>
+                <span class="block text-sm text-gray-600">starten wieder am 14.08.</span>
+            </p>
+            <p>
+                <a href="/sippe/funkelfuechse" class="font-semibold text-pink-700 underline decoration-pink-300 underline-offset-4 hover:text-pink-800">
+                    Funkelfüchse
+                </a>
+                <span class="block text-sm text-gray-600">starten am 21.08. mit aktiven Gruppenstunden.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
 <!-- KACHELN: MEUTE UND SIPPE -->
 <section class="max-w-5xl mx-auto px-6 py-12 space-y-6">
     <h2 class="text-3xl font-bold text-gray-800 mb-6">Unsere Gruppen</h2>
     <!-- Meute -->
     <div class="bg-white border border-gray-300 p-8 w-full">
-        <h2 class="text-2xl font-bold text-green-700">Meute (7–10 Jahre)</h2>
+        <h2 class="text-2xl font-bold text-green-700">Meute (6–10 Jahre)</h2>
         <p class="text-gray-700 mt-2">Spielen, Basteln und kleine Abenteuer in der Gruppe erleben.</p>
         <p class="text-sm text-gray-500 mt-4">Freitags · 16:30 Uhr - 18 Uhr · Ev. Auferstehungsgemeinde Bremen-Hastedt</p>
         <a href="/meute" class="inline-block mt-4 px-4 py-2 bg-green-100 text-green-700 font-medium border border-green-300 hover:bg-green-200 transition rounded">
